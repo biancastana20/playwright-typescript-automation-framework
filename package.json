@@ -1,0 +1,23 @@
+{
+  "name": "project_fe_be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "test": "npx playwright test",
+  "ui-mode": "npx playwright test --ui",
+  "ui": "npx playwright test --project=chromium --headed",
+  "uat": "ENV=uat npx playwright test --project=chromium --headed",
+  "api": "npx playwright test tests/api/",
+  "report": "npx playwright show-report",
+  "debug": "PWDEBUG=1 npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.9"
+  }
+}
