@@ -1,13 +1,17 @@
 Playwright Hybrid Automation Framework (UI & API)
 This project is a professional-grade automation framework built with Playwright and TypeScript. It covers end-to-end testing for both the UI layer (SauceDemo) and the API layer (ReqRes), following industry best practices like the Page Object Model (POM) and Data-Driven Testing.
 
-🛠 Tech Stack
-Engine: Playwright
-Language: TypeScript
-Architecture: Page Object Model (POM)
-CI/CD: GitHub Actions
-Data Management: JSON & Dotenv
-Reporting: Playwright HTML Report & Trace Viewer
+
+## 🚀 Key Features
+* **Page Object Model (POM):** Optimized for code reusability and easy maintenance.
+* **CI/CD Integration:** Automated test execution via **GitHub Actions**.
+* **Environment Management:** Secure handling of credentials using `dotenv` and **GitHub Secrets**.
+
+## 🛠️ Tech Stack
+* **Playwright:** Browser automation and test runner.
+* **TypeScript:** Strong typing for reliable code.
+* **GitHub Actions:** Continuous Integration pipeline.
+* **Node.js:** Runtime environment.
 
 📂 Project Structure
 Plaintext
@@ -68,3 +72,7 @@ After running tests, generate and open the HTML report:
 Bash:
 npm run report
 To debug failures, use the Trace Viewer included in the report to see step-by-step execution, network logs, and DOM snapshots.
+
+🤖 CI/CD Pipeline
+The framework is integrated with GitHub Actions. The pipeline automatically triggers on every push to the main branch.
+Security: Credentials are encrypted and stored in GitHub Secrets, ensuring no sensitive data is exposed in the repository.
