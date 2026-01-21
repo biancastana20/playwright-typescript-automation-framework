@@ -1,27 +1,26 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
 
+// 1. Initialize dotenv to read the .env file
+dotenv.config();
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-const environment = process.env.ENV || 'test'; // Default este 'test'
-const urls: Record<string, { url: string; user: string; pass: string }> = {
-   test: {
-        url: 'https://www.saucedemo.com/',
-        user: 'standard_user',
-        pass: 'secret_sauce'
+//When run the command npx playwright test, Node.js starts the Playwright engine.
+//The dotenv.config() is the first thing that executes. The dotenv package searches for the .env file, reads it, and injects all the variables (like ENV, UAT_URL, TEST_USER) into the global process.env object.
+const stage = process.env.ENV || 'test';
+
+// 3. Define the configuration for each environment
+const configData = {
+    test: {
+        url: process.env.TEST_URL,
+        user: process.env.TEST_USER,
+        pass: process.env.TEST_PASS
     },
     uat: {
-        url: 'https://uat.saucedemo.com/',
-        user: 'uat_user',
-        pass: 'uat_password'
+        url: process.env.UAT_URL,
+        user: process.env.UAT_USER,
+        pass: process.env.UAT_PASS
     }
 };
-//SAU ----
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -41,7 +40,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: urls[environment]?.url || urls.test.url,
+    baseURL: (configData as any)[stage]?.url || configData.test.url,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
